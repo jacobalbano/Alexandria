@@ -1,0 +1,9 @@
+syntax: glob
+.vs
+Alexandria/bin
+Alexandria/obj
+TestResults
+**.dll
+Tests/bin
+Tests/obj
+packages
