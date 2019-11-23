@@ -192,7 +192,9 @@ namespace Alexandria
         private Stream FindStreamFromPath(string path, out string storeLocalPath, out IFileStore fileStore)
         {
             var pathEnumerator = new PathFragmentEnumerator(path);
-            return FindStream(path, pathEnumerator, out storeLocalPath, out fileStore);
+
+            try { return FindStream(path, pathEnumerator, out storeLocalPath, out fileStore); }
+            catch (Exception) { throw new Exception($"The file '{path}' could not be found"); }
         }
 
         private Stream FindStream(string fullPath, PathFragmentEnumerator fragmentEnumerator, out string storeLocalPath, out IFileStore fileStore, List<IFileStore> fileStoresToSearch = null)
